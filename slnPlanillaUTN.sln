@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanillaUTN", "PlanillaUTN\PlanillaUTN.csproj", "{D331CBF9-B272-404D-8582-3B9698F4F2E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoProgramadoPrg3", "..\ProyectoProgramadoPrg3\ProyectoProgramadoPrg3\ProyectoProgramadoPrg3.csproj", "{2A218F85-EA0C-481C-9EE7-A77B40AD08D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D331CBF9-B272-404D-8582-3B9698F4F2E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D331CBF9-B272-404D-8582-3B9698F4F2E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D331CBF9-B272-404D-8582-3B9698F4F2E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D331CBF9-B272-404D-8582-3B9698F4F2E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A218F85-EA0C-481C-9EE7-A77B40AD08D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A218F85-EA0C-481C-9EE7-A77B40AD08D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A218F85-EA0C-481C-9EE7-A77B40AD08D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A218F85-EA0C-481C-9EE7-A77B40AD08D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {008E4E7A-F7AF-4703-8E2F-033286A614AC}
+	EndGlobalSection
+EndGlobal
