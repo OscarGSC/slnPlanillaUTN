@@ -9,7 +9,7 @@ namespace PlanillaUTN.Layers.BLL
 {
     class DocenteBLL
     {
-        public Entities.Docente DocenteID(string id)
+        public Entities.Docente DocenteID(int id)
         {
             try
             {
@@ -40,14 +40,42 @@ namespace PlanillaUTN.Layers.BLL
             return DAL.DocenteDAL.SeleccionarTodosSP();
         }
 
-        public double CalcularSalario(string idDocente)
+        public double CalcularSalario(int idDocente)
         {
             Docente doc = DocenteID(idDocente);
             Categoria cat = CategoriaBLL.ObtenerCatPorID(doc.IdCategoria);
             Nombramiento nom = NombramientoBLL.SeleccionarPorID(doc.Id);
-            Jornada jor = JornadaBLL.JornadaID(doc.Id);
+            List<Jornada> jor = JornadaBLL.JornadaID(doc.Id);
+            double total = 0;
+            double regla1 = 0;
+            double CCSS = 0.09;
+            double BancoPopular = 0.015;
+            double Pension = 0.11;
+            double Seguro = 7000;
 
-            decimal regla1 = cat.SalarioBase * jor.PorcentajeSalario;
+            double porcentaSalarioTotal = 0;
+            foreach (Jornada item in jor)
+            {
+                porcentaSalarioTotal = porcentaSalarioTotal + item.PorcentajeSalario;
+            }
+            regla1 = Convert.ToDouble(Convert.ToDouble(cat.SalarioBase) * (porcentaSalarioTotal/100));
+            double regla2 = CCSS + BancoPopular + Pension;
+            total = Convert.ToDouble(regla1 - (regla1 * regla2) - Seguro);
+
+            if (total > 799000 && total < 1199000)
+            {
+                total = total - ((total-799000) * 0.1);
+            }
+            if (total > 1199000)
+            {
+                total = total - ((total - 1199000) *0.15);
+            }
+
+            int annos = DateTime.Now.Year - doc.FechaIngreso.Year;
+
+            total = total + (annos * Convert.ToDouble(cat.CostoAnualidad));
+
+            return total;
         }
     }
 }

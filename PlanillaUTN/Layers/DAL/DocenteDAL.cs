@@ -10,7 +10,7 @@ namespace PlanillaUTN.Layers.DAL
 {
     class DocenteDAL
     {
-        public static Entities.Docente SeleccionarDocenteIDSP(string id)
+        public static Entities.Docente SeleccionarDocenteIDSP(int id)
         {
             try
             {

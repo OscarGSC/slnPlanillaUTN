@@ -15,6 +15,5 @@ namespace PlanillaUTN.Layers.Entities
         public string Email { get; set; }
         public string IdCategoria { get; set; }
         public string nombreCategoria { get; set; }
-
     }
 }

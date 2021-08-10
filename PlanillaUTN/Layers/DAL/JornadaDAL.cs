@@ -160,7 +160,7 @@ namespace PlanillaUTN.Layers.DAL
                         Jornada Jor = new Jornada();
                         Jor.Id = int.Parse(reader["Id"].ToString());
                         Jor.Descripcion = reader["Descripcion"].ToString();
-                        Jor.PorcentajeSalario = int.Parse(reader["Id"].ToString());
+                        Jor.PorcentajeSalario = int.Parse(reader["porcentajeSalario"].ToString());
                         lista.Add(Jor);
                     }
 

@@ -77,7 +77,7 @@ namespace PlanillaUTN.Layers.DAL
                     string sql = @"SP_SeleccionarNombramientosporIdDocente";
 
                     var comando = new SqlCommand(sql);
-                    comando.Parameters.AddWithValue("@Id", id);
+                    comando.Parameters.AddWithValue("@IdDocente", id);
 
                     // IMPORTANTE: antes del Execute se debe indicar al comando que es un SP
                     comando.CommandType = System.Data.CommandType.StoredProcedure;
@@ -89,9 +89,8 @@ namespace PlanillaUTN.Layers.DAL
 
                     while (reader.Read())
                     {
-                        Nom.IdDocente = int.Parse(reader["IdIdDocente"].ToString());
+                        Nom.IdDocente = int.Parse(reader["IdDocente"].ToString());
                         Nom.IdJornada = int.Parse(reader["IdJornada"].ToString());
-
                     }
 
                     return Nom;

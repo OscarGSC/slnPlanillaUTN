@@ -16,5 +16,11 @@ namespace PlanillaUTN.Layers.UI
         {
             InitializeComponent();
         }
+
+        private void frmRepDocentes_Load(object sender, EventArgs e)
+        {
+            DocenteBindingSource.DataSource = BLL.DocenteBLL.ObtenerTodos();
+            this.reportViewer1.RefreshReport();
+        }
     }
 }

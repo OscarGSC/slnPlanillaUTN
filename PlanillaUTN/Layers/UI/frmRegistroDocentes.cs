@@ -28,7 +28,7 @@ namespace PlanillaUTN.Layers.UI
             try
             {
                 PlanillaUTN.Layers.BLL.DocenteBLL logica = new PlanillaUTN.Layers.BLL.DocenteBLL();
-                PlanillaUTN.Layers.Entities.Docente doc = logica.DocenteID(mtxId.Text);
+                PlanillaUTN.Layers.Entities.Docente doc = logica.DocenteID(Convert.ToInt32(mtxId.Text));
                 if (doc.Nombre == null)
                 {
                     try

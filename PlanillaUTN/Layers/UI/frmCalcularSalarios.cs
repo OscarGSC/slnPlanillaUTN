@@ -35,8 +35,7 @@ namespace PlanillaUTN.Layers.UI
         {
             docente = (Entities.Docente)dgvDocentes.SelectedRows[0].DataBoundItem;
             frmNombramientos frm = new frmNombramientos();
-            frm.Show();
-            this.Hide();
+            frm.ShowDialog();
         }
         private void Refrescar()
         {
@@ -50,6 +49,8 @@ namespace PlanillaUTN.Layers.UI
                 docente = (Entities.Docente)dgvDocentes.SelectedRows[0].DataBoundItem;
                 PlanillaUTN.Layers.BLL.NombramientoBLL logica = new PlanillaUTN.Layers.BLL.NombramientoBLL();
                 logica.ObtenerDescrip(docente.Id);
+                PlanillaUTN.Layers.BLL.DocenteBLL doc = new PlanillaUTN.Layers.BLL.DocenteBLL();
+                MessageBox.Show("Salario: " + doc.CalcularSalario(docente.Id).ToString("c"));
             }
             catch (Exception x)
             {
