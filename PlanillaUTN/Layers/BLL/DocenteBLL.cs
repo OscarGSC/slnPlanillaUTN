@@ -46,36 +46,39 @@ namespace PlanillaUTN.Layers.BLL
             Categoria cat = CategoriaBLL.ObtenerCatPorID(doc.IdCategoria);
             Nombramiento nom = NombramientoBLL.SeleccionarPorID(doc.Id);
             List<Jornada> jor = JornadaBLL.JornadaID(doc.Id);
-            double total = 0;
-            double regla1 = 0;
-            double CCSS = 0.09;
-            double BancoPopular = 0.015;
-            double Pension = 0.11;
-            double Seguro = 7000;
 
-            double porcentaSalarioTotal = 0;
+            double neto = 0;
+
             foreach (Jornada item in jor)
             {
-                porcentaSalarioTotal = porcentaSalarioTotal + item.PorcentajeSalario;
+                neto += (item.PorcentajeSalario / 100.0) * Convert.ToDouble(cat.SalarioBase);
             }
-            regla1 = Convert.ToDouble(Convert.ToDouble(cat.SalarioBase) * (porcentaSalarioTotal/100));
-            double regla2 = CCSS + BancoPopular + Pension;
-            total = Convert.ToDouble(regla1 - (regla1 * regla2) - Seguro);
 
-            if (total > 799000 && total < 1199000)
+            double deducciones = 0;
+            if (neto > 799000 && neto < 1199000)
             {
-                total = total - ((total-799000) * 0.1);
+                deducciones += ((neto - 799000) * 0.1);
             }
-            if (total > 1199000)
+            if (neto > 1199000)
             {
-                total = total - ((total - 1199000) *0.15);
+                deducciones +=  ((neto - 1199000) * 0.15);
             }
+            deducciones += (neto * 0.09) + (neto * 0.015) + (neto * 0.11);
+            deducciones +=  7000.0;
 
-            int annos = DateTime.Now.Year - doc.FechaIngreso.Year;
+            int totalTime=0;
+            double anualidad = 0;
+            if (doc.FechaIngreso.Month >= DateTime.Now.Month && doc.FechaIngreso.Day >= DateTime.Now.Day)
+            {
+                totalTime = DateTime.Now.Year - doc.FechaIngreso.Year;
+            }
+            else
+            {
+                totalTime = (DateTime.Now.Year - doc.FechaIngreso.Year) -1;
+            }
+            anualidad = Convert.ToDouble(cat.CostoAnualidad) * totalTime;
 
-            total = total + (annos * Convert.ToDouble(cat.CostoAnualidad));
-
-            return total;
+            return neto - deducciones + anualidad;
         }
     }
 }
